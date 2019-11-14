@@ -1,6 +1,6 @@
 FROM php:7.2.23-fpm
 
-LABEL mantainer="Lorenzo Calamandrei <calamandrei.lorenzo.work@gmail.com>"
+LABEL mantainer="Lorenzo Calamandrei <nexcal.dev@gmail.com>"
 
 # user 1000
 RUN mkdir /home/local \
