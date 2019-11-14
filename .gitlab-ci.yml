@@ -1,0 +1,29 @@
+image: docker:stable
+
+services:
+  - docker:dind
+
+variables:
+  DOCKER_HOST: tcp://docker:2375
+  DOCKER_DRIVER: overlay2
+
+  BASE_IMAGE: $CI_REGISTRY_IMAGE/base
+
+before_script:
+  - docker login -u $CI_REGISTRY_USER -p $CI_REGISTRY_PASSWORD $CI_REGISTRY
+
+stages:
+  - base
+
+Build Base:
+  stage: base
+  script:
+    - docker pull $BASE_IMAGE:latest || true
+    - docker build --tag $BASE_IMAGE:latest -f ./Dockerfile . --cache-from $BASE_IMAGE:latest
+    - docker push $BASE_IMAGE:latest
+  only:
+    refs:
+      - merge_requests
+      - master
+    changes:
+      - Dockerfile
