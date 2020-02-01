@@ -15,7 +15,7 @@ RUN mkdir /home/local \
 # update
 RUN apt-get update -y && apt-get upgrade -y
 
-RUN apt-get install -y --no-install-recommends apt-utils zip zlib1g-dev libxml2-dev libssl-dev > /dev/null
+RUN apt-get install -y --no-install-recommends apt-utils libzip-dev zip zlib1g-dev libxml2-dev libssl-dev > /dev/null
 
 # laravel deps
 RUN docker-php-ext-configure zip > /dev/null && docker-php-ext-install zip > /dev/null
