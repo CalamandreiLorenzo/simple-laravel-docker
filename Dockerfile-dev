@@ -1,0 +1,17 @@
+# This Dockerfile will be builded on DockerHub automated build configuration to create:
+# - lorenzocalamandrei/angular-container:*.*.*-dev
+# where *.*.* is the version of this Dockerfile
+# The version will be taken from the tag by git.
+
+# This Dockerfile extends:
+# - lorenzocalamandrei/angular-container:*.*.*-ci
+# - lorenzocalamandrei/angular-container:*.*.*-base
+ARG BASE_IMAGE=lorenzocalamandrei/laravel-php:1.2-php-7.2.23-ci
+FROM ${BASE_IMAGE}
+
+LABEL mantainer="Lorenzo Calamandrei <nexcal.dev@gmail.com>"
+
+# prepare the VOLUMES
+VOLUME [ "/var/www/html" ]
+
+EXPOSE 8000

@@ -6,6 +6,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [1.2-php-7.2.23] - 2020-02-01
+- Update PHP version
+- Update images available (base/ci/dev)
+
 ## [1.1-php-7.2.23] - 2019-11-14
 ###Changes
 - Update Repo management and ci

@@ -1,0 +1,18 @@
+# This Dockerfile will be builded on DockerHub automated build configuration to create:
+# - lorenzocalamandrei/angular-container:*.*.*-dev
+# where *.*.* is the version of this Dockerfile
+# The version will be taken from the tag by git.
+
+# This Dockerfile extends:
+# - lorenzocalamandrei/angular-container:*.*.*-base
+ARG BASE_IMAGE=lorenzocalamandrei/laravel-php:1.2-php-7.2.23-base
+FROM ${BASE_IMAGE}
+
+LABEL mantainer="Lorenzo Calamandrei <nexcal.dev@gmail.com>"
+
+# composer
+RUN apt-get install curl > /dev/null && curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer
+
+USER 1000
+RUN composer global require laravel/installer
+RUN echo 'export PATH="$PATH:$HOME/.composer/vendor/bin"' >> ~/.bashrc
