@@ -23,7 +23,7 @@ Build Base:
   stage: base
   script:
     - docker pull $BASE_IMAGE:latest || true
-    - docker build --tag $BASE_IMAGE:latest -f ./Dockerfile . --cache-from $BASE_IMAGE:latest
+    - docker build --tag $BASE_IMAGE:latest -f ./Dockerfile-base . --cache-from $BASE_IMAGE:latest
     - docker push $BASE_IMAGE:latest
   only:
     refs:
