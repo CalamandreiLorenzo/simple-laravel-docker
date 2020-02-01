@@ -3,9 +3,6 @@ image: docker:stable
 services:
   - docker:stable-dind
 
-include:
-  template: Container-Scanning.gitlab-ci.yml
-
 variables:
   DOCKER_DRIVER: overlay2
 
@@ -60,12 +57,3 @@ Build Dev:
       - master
     changes:
       - Dockerfile-dev
-
-container_scanning:
-  image:
-    name: registry.gitlab.com/gitlab-org/security-products/analyzers/klar:$CI_SERVER_VERSION_MAJOR-$CI_SERVER_VERSION_MINOR-stable
-    entrypoint: []
-  variables:
-    KLAR_TRACE: "true"
-    CI_APPLICATION_REPOSITORY: $CI_REGISTRY_IMAGE/base
-    CI_APPLICATION_TAG: latest
