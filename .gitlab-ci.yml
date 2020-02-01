@@ -16,6 +16,8 @@ before_script:
 
 stages:
   - base
+  - ci
+  - dev
 
 Build Base:
   stage: base
