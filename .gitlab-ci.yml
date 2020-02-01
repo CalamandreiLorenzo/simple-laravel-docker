@@ -22,6 +22,7 @@ stages:
   - base
   - ci
   - dev
+  - test
 
 Build Base:
   stage: base
