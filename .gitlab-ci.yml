@@ -3,10 +3,14 @@ image: docker:stable
 services:
   - docker:dind
 
+include:
+  template: Container-Scanning.gitlab-ci.yml
+
 variables:
   DOCKER_HOST: tcp://docker:2375
   DOCKER_DRIVER: overlay2
 
+  BASE_IMAGE_SHA: $CI_REGISTRY_IMAGE/$CI_COMMIT_REF_SLUG:$CI_COMMIT_SHA
   BASE_IMAGE: $CI_REGISTRY_IMAGE/base
   CI_IMAGE: $CI_REGISTRY_IMAGE/ci
   DEV_IMAGE: $CI_REGISTRY_IMAGE/dev
@@ -24,7 +28,9 @@ Build Base:
   script:
     - docker pull $BASE_IMAGE:latest || true
     - docker build --tag $BASE_IMAGE:latest -f ./Dockerfile-base . --cache-from $BASE_IMAGE:latest
+    - docker build --tag $BASE_IMAGE_SHA -f ./Dockerfile-base . --cache-from $BASE_IMAGE_SHA
     - docker push $BASE_IMAGE:latest
+    - docker push $BASE_IMAGE_SHA
   only:
     refs:
       - merge_requests
