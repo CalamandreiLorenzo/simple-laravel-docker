@@ -63,5 +63,6 @@ Build Dev:
 
 container_scanning:
   variables:
+    KLAR_TRACE: "true"
     CI_APPLICATION_REPOSITORY: $CI_REGISTRY_IMAGE/base
     CI_APPLICATION_TAG: latest
