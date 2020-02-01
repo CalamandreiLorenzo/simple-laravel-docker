@@ -10,6 +10,8 @@ FROM ${BASE_IMAGE}
 
 LABEL mantainer="Lorenzo Calamandrei <nexcal.dev@gmail.com>"
 
+USER root
+
 # composer
 RUN apt-get install curl > /dev/null && curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer
 
