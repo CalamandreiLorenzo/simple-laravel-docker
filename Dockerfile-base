@@ -3,7 +3,7 @@
 # where *.*.* is the version of this Dockerfile
 # The version will be taken from the tag by git.
 
-FROM php:7.2.23-fpm
+FROM php:7.4.2-fpm
 
 LABEL mantainer="Lorenzo Calamandrei <nexcal.dev@gmail.com>"
 
