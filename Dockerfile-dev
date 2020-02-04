@@ -6,10 +6,13 @@
 # This Dockerfile extends:
 # - lorenzocalamandrei/angular-container:*.*.*-ci
 # - lorenzocalamandrei/angular-container:*.*.*-base
-ARG BASE_IMAGE=lorenzocalamandrei/laravel-php:1.3-php-7.4.2-ci
+ARG BASE_IMAGE=lorenzocalamandrei/laravel-php:1.4-php-7.4.2-ci
 FROM ${BASE_IMAGE}
 
 LABEL mantainer="Lorenzo Calamandrei <nexcal.dev@gmail.com>"
+
+RUN composer global require laravel/installer
+RUN echo 'export PATH="$PATH:$HOME/.composer/vendor/bin"' >> ~/.bashrc
 
 # prepare the VOLUMES
 VOLUME [ "/var/www/html" ]

@@ -8,9 +8,7 @@ FROM php:7.4.2-fpm
 LABEL mantainer="Lorenzo Calamandrei <nexcal.dev@gmail.com>"
 
 # user 1000
-RUN mkdir /home/local \
-    && useradd -u 1000 local -d "/home/local" \
-    && chown local.local /home/local
+RUN useradd -u 1000 local
 
 # update
 RUN apt-get update -y && apt-get upgrade -y
