@@ -6,6 +6,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [1.5-php-7.4.2] - 2020-02-04
+- Restore user home directory
+
 ## [1.4-php-7.4.2] - 2020-02-04
 - Move laravel install command into dev image from ci image
 
