@@ -9,7 +9,7 @@ LABEL mantainer="Lorenzo Calamandrei <nexcal.dev@gmail.com>"
 
 # user 1000
 RUN mkdir /home/local \
-    &&  -d "/home/local" \
+    && useradd -u 1000 local -d "/home/local" \
     && chown local.local /home/local
 
 # update
