@@ -12,6 +12,10 @@ LABEL mantainer="Lorenzo Calamandrei <nexcal.dev@gmail.com>"
 
 USER root
 
+# user to handle the code coverage in pipes
+RUN pecl install xdebug > /dev/null
+RUN docker-php-ext-enable xdebug > /dev/null
+
 # composer
 RUN apt-get install curl > /dev/null && curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer
 
